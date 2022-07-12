@@ -1,0 +1,273 @@
+*{
+    font-family: monospace;
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
+html, body{
+    overflow-x: hidden;
+    height: 100%;
+}
+
+.c-header{
+    width: 100%;
+    height: 60px;
+    background-color:#12bf29;
+    position: fixed;
+}
+
+.c-btn-icon{
+    position: absolute;
+    top: 20px;
+    left: 40px; /* manakisaka ny humburger */
+    height: 22px;
+    width: 22px;
+    cursor: pointer;
+}
+
+.c-btn-bar{
+    width: 100%;
+    height: 3px;
+    background-color: #fff;
+    position: absolute; /* mampifintina anle bar am voalohany */
+}
+
+.c-btn-bar--horizontal{
+    position: relative;
+    float: left;
+    margin-top: 3px ;
+    transition: all .3s;
+}
+
+.c-btn-bar--diagonal{
+    position: relative;
+    float: left;
+    transition: all .3s;
+}
+
+.c-btn-bar--diagonal.diagonal-1{
+    transition: all .3s;
+}
+
+.c-btn-bar--diagonal.diagonal-2{
+    margin-top: 3px;
+    transition: all .3s;
+}
+
+input[type="checkbox"]{
+    display: none ;
+}
+
+input[type="checkbox"]:checked ~ .c-btn-icon > .c-btn-bar--horizontal{
+    opacity: 0; /* rehefa miclic d manjavona */
+    transition: all .3s;
+}
+
+input[type="checkbox"]:checked ~ .c-btn-icon > .c-btn-bar--diagonal.diagonal-1{
+    transform: rotate(135deg); /* rotation bar diagonal 1 */
+    margin-top: 8px;
+    transition: all .3s;
+}
+
+input[type="checkbox"]:checked ~ .c-btn-icon > .c-btn-bar--diagonal.diagonal-2{
+    transform: rotate(-135deg); /* rotation bar diagonal 2 */
+    margin-top: -8px;
+    transition: all .3s;
+
+}
+
+.c-sidebar{
+    position: fixed;
+    width: 250px;
+    height: 100%;
+    margin-top: 60px;
+    transform: translateX(-250px);
+    transition: transform 250ms easy-in-out;
+    background-color: #12bf29;
+}
+
+input[type="checkbox"]:checked ~ .c-sidebar{
+    transform: translateX(0);
+}
+
+.c-sidebar-items{
+    border-top: 1px solid rgba(255, 255, 255, .10);
+    margin: 0;
+    padding: 0;
+}
+
+.c-sidebar-items li{
+    cursor: pointer;
+    list-style: none;
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: bold;
+    padding: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, .10);
+}
+ 
+.c-sidebar-items li span{
+    display: block; /* mampisarak ny span sy li */
+    font-size: 10px;
+    color: rgba(255, 255, 255, .6);
+}
+
+
+/* Soratra e-biodigesteur */
+
+.ebiodig{
+    font-size: 30px;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px;
+}
+
+
+
+
+
+
+
+
+/*
+    code by Iatek LLC 2018 - CC 2.0 License - Attribution required
+    code customized by Azmind.com
+*/
+@media (min-width: 768px) and (max-width: 991px) {
+    /* Show 4th slide on md if col-md-4*/
+    .carousel-inner .active.col-md-4.carousel-item + .carousel-item + .carousel-item + .carousel-item {
+        position: absolute;
+        top: 0;
+        right: -33.3333%;  /*change this with javascript in the future*/
+        z-index: -1;
+        display: block;
+        visibility: visible;
+    }
+}
+@media (min-width: 576px) and (max-width: 768px) {
+    /* Show 3rd slide on sm if col-sm-6*/
+    .carousel-inner .active.col-sm-6.carousel-item + .carousel-item + .carousel-item {
+        position: absolute;
+        top: 0;
+        right: -50%;  /*change this with javascript in the future*/
+        z-index: -1;
+        display: block;
+        visibility: visible;
+    }
+}
+@media (min-width: 576px) {
+    .carousel-item {
+        margin-right: 0;
+    }
+    /* show 2 items */
+    .carousel-inner .active + .carousel-item {
+        display: block;
+    }
+    .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left),
+    .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item {
+        transition: none;
+    }
+    .carousel-inner .carousel-item-next {
+        position: relative;
+        transform: translate3d(0, 0, 0);
+    }
+    /* left or forward direction */
+    .active.carousel-item-left + .carousel-item-next.carousel-item-left,
+    .carousel-item-next.carousel-item-left + .carousel-item,
+    .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item {
+        position: relative;
+        transform: translate3d(-100%, 0, 0);
+        visibility: visible;
+    }
+    /* farthest right hidden item must be also positioned for animations */
+    .carousel-inner .carousel-item-prev.carousel-item-right {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        display: block;
+        visibility: visible;
+    }
+    /* right or prev direction */
+    .active.carousel-item-right + .carousel-item-prev.carousel-item-right,
+    .carousel-item-prev.carousel-item-right + .carousel-item,
+    .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item {
+        position: relative;
+        transform: translate3d(100%, 0, 0);
+        visibility: visible;
+        display: block;
+        visibility: visible;
+    }
+}
+/* MD */
+@media (min-width: 768px) {
+    /* show 3rd of 3 item slide */
+    .carousel-inner .active + .carousel-item + .carousel-item {
+        display: block;
+    }
+    .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item {
+        transition: none;
+    }
+    .carousel-inner .carousel-item-next {
+        position: relative;
+        transform: translate3d(0, 0, 0);
+    }
+    /* left or forward direction */
+    .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item {
+        position: relative;
+        transform: translate3d(-100%, 0, 0);
+        visibility: visible;
+    }
+    /* right or prev direction */
+    .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item {
+        position: relative;
+        transform: translate3d(100%, 0, 0);
+        visibility: visible;
+        display: block;
+        visibility: visible;
+    }
+}
+/* LG */
+@media (min-width: 991px) {
+    /* show 4th item */
+    .carousel-inner .active + .carousel-item + .carousel-item + .carousel-item {
+        display: block;
+    }
+    .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item + .carousel-item {
+        transition: none;
+    }
+    /* Show 5th slide on lg if col-lg-3 */
+    .carousel-inner .active.col-lg-3.carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
+        position: absolute;
+        top: 0;
+        right: -25%;  /*change this with javascript in the future*/
+        z-index: -1;
+        display: block;
+        visibility: visible;
+    }
+    /* left or forward direction */
+    .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
+        position: relative;
+        transform: translate3d(-100%, 0, 0);
+        visibility: visible;
+    }
+    /* right or prev direction //t - previous slide direction last item animation fix */
+    .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
+        position: relative;
+        transform: translate3d(100%, 0, 0);
+        visibility: visible;
+        display: block;
+        visibility: visible;
+    }
+}
+
+.para{
+    color: #fff;
+    font-weight: bold;
+    padding: 2px;
+    text-align: center;
+}
